@@ -392,22 +392,20 @@
       --aibl-shadow: #050b14;
       --aibl-highlight: #c8ff00;
       --aibl-on-highlight: #111111;
-      --aibl-paper: #142136;
-      --aibl-wash: #1c2d49;
     }
 
     [data-preset="aibl-field-manual"][data-theme="light"] {
       --bg: #f4f1ea;
       --grid: rgba(17, 17, 17, 0.05);
-      --panel: #fcfaf4;
+      --panel: #ffffff;
       --panel-border: #111111;
-      --lane-fill: #f8f6ef;
+      --lane-fill: #ffffff;
       --lane-stroke: #6b6b6b;
       --text: #111111;
       --text-muted: #3a3a3a;
       --text-dim: #6b6b6b;
       --text-faint: #5b5b5b;
-      --mask: #fcfaf4;
+      --mask: #ffffff;
       --frontend-fill: #daf2f6;
       --frontend-stroke: #007d91;
       --backend-fill: #eef6cc;
@@ -424,16 +422,14 @@
       --external-stroke: #3a3a3a;
       --arrow: #6b6b6b;
       --arrow-emphasis: #4d6900;
-      --toolbar-bg: #fcfaf4;
+      --toolbar-bg: #ffffff;
       --toolbar-border: #111111;
       --toolbar-text: #111111;
       --toolbar-hover: #eef6cc;
-      --toolbar-menu-bg: #fcfaf4;
+      --toolbar-menu-bg: #ffffff;
       --aibl-shadow: #111111;
       --aibl-highlight: #c8ff00;
       --aibl-on-highlight: #111111;
-      --aibl-paper: #fcfaf4;
-      --aibl-wash: #dde6ea;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -850,6 +846,22 @@
       font-size: 0.68rem;
       font-weight: 700;
     }
+    html[data-preset="aibl-field-manual"] .header-row::after {
+      content: attr(data-preset-badge-aibl-field-manual);
+      margin-left: auto;
+      padding: 0.3rem 0.58rem;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--aibl-highlight);
+      color: var(--aibl-on-highlight);
+      box-shadow: 3px 3px 0 var(--aibl-shadow);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+    }
+
     .diagram-container {
       --archify-nav-reserve: 0px;
       background: var(--panel);
@@ -3598,132 +3610,6 @@
       border-radius: 0.2rem;
       box-shadow: none;
     }
-    html[data-preset="aibl-field-manual"] .toolbar button:hover,
-    html[data-preset="aibl-field-manual"] .toolbar button:focus-visible,
-    html[data-preset="aibl-field-manual"] .diagram-nav button:hover,
-    html[data-preset="aibl-field-manual"] .diagram-nav button:focus-visible,
-    html[data-preset="aibl-field-manual"] .focus-chip button:focus-visible,
-    html[data-preset="aibl-field-manual"] .guided-views button:focus-visible {
-      border-color: var(--panel-border);
-      outline-color: var(--aibl-highlight);
-      box-shadow: inset 0 -3px 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .toolbar button[aria-expanded="true"],
-    html[data-preset="aibl-field-manual"] .toolbar button[aria-pressed="true"]:not(#btn-theme),
-    html[data-preset="aibl-field-manual"] .diagram-nav button[aria-expanded="true"],
-    html[data-preset="aibl-field-manual"] .diagram-nav button[aria-pressed="true"] {
-      border-color: var(--panel-border);
-      background: var(--aibl-wash);
-      color: var(--text);
-      box-shadow: inset 0 -4px 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .focus-chip {
-      overflow: visible;
-      border-color: var(--panel-border);
-      background: var(--aibl-paper);
-      box-shadow: 4px 4px 0 var(--aibl-shadow);
-    }
-    html[data-preset="aibl-field-manual"] .focus-chip::before {
-      position: absolute;
-      top: -2px;
-      left: 1rem;
-      z-index: 2;
-      width: 4.5rem;
-      border-top: 6px solid var(--aibl-highlight);
-      content: "";
-      pointer-events: none;
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-head {
-      border-bottom: 2px solid var(--panel-border);
-      background: var(--aibl-wash);
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-eyebrow {
-      display: inline-block;
-      padding: 0.14rem 0.3rem;
-      background: var(--aibl-highlight);
-      color: var(--aibl-on-highlight);
-      font-family: 'JetBrains Mono', monospace;
-      letter-spacing: 0.1em;
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-title {
-      font-family: 'Space Grotesk', 'Inter', sans-serif;
-      font-size: 0.88rem;
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-meta span,
-    html[data-preset="aibl-field-manual"] .semantic-passport-meta code {
-      border-color: var(--panel-border);
-      border-radius: 0.12rem;
-      background: var(--aibl-paper);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-meta [data-passport="kind"] {
-      border-color: var(--panel-border);
-      background: var(--aibl-highlight);
-      color: var(--aibl-on-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-evidence {
-      border: 2px solid var(--panel-border);
-      border-radius: 0.18rem;
-      background: var(--aibl-wash);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-evidence-status {
-      color: var(--text);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-evidence-status::before {
-      border-radius: 0.08rem;
-      background: var(--aibl-highlight);
-      box-shadow: 2px 2px 0 var(--aibl-shadow);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-source {
-      border-radius: 0.12rem;
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-source:hover,
-    html[data-preset="aibl-field-manual"] .semantic-passport-source:focus-visible {
-      border-color: var(--panel-border);
-      background: var(--aibl-paper);
-      box-shadow: inset 3px 0 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-reach {
-      border-top: 2px solid var(--panel-border);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-reach-actions button {
-      border-color: var(--panel-border);
-      border-radius: 0.12rem;
-      background: var(--aibl-paper);
-    }
-    html[data-preset="aibl-field-manual"] .semantic-passport-reach-actions button[aria-pressed="true"] {
-      border-color: var(--panel-border);
-      background: var(--aibl-wash);
-      box-shadow: inset 0 -3px 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-group-title {
-      border-bottom: 1px solid var(--panel-border);
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-row {
-      border-radius: 0.12rem;
-    }
-    html[data-preset="aibl-field-manual"] .relationship-lens-row:hover,
-    html[data-preset="aibl-field-manual"] .relationship-lens-row:focus-visible,
-    html[data-preset="aibl-field-manual"] .relationship-lens-row[data-preview-active="true"] {
-      background: var(--aibl-wash);
-      box-shadow: inset 4px 0 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .guided-view-stop,
-    html[data-preset="aibl-field-manual"] .guided-view-stop::before {
-      border-radius: 0.12rem;
-    }
-    html[data-preset="aibl-field-manual"] .guided-view-stop[data-story-beat-state="active"] {
-      border-color: var(--panel-border);
-      background: var(--aibl-wash);
-      box-shadow: inset 0 -3px 0 var(--aibl-highlight);
-    }
-    html[data-preset="aibl-field-manual"] .guided-view-stop[data-story-beat-state="active"]::before {
-      border-color: var(--panel-border);
-      background: var(--aibl-highlight);
-      color: var(--aibl-on-highlight);
-      box-shadow: 2px 2px 0 var(--aibl-shadow);
-    }
     .motion-control-dot {
       width: 0.46rem;
       height: 0.46rem;
@@ -3969,6 +3855,10 @@
         order: 3;
       }
       html[data-preset="editorial"] .header-row::after {
+        margin-left: 0;
+        order: 3;
+      }
+      html[data-preset="aibl-field-manual"] .header-row::after {
         margin-left: 0;
         order: 3;
       }
@@ -4928,35 +4818,6 @@
     svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-source],
     svg[data-preset="blueprint"][data-relationship-preview-active] [data-relationship-preview-target] {
       filter: drop-shadow(0 0 3px var(--frontend-stroke));
-    }
-
-    /* Field Manual interaction states use ink registration and a lime
-       highlighter instead of the default luminous UI glow. Semantic node
-       fills stay untouched, so category color still carries its authored
-       meaning while focus reads as a separate reader action. */
-    svg[data-preset="aibl-field-manual"] [data-node-id]:hover,
-    svg[data-preset="aibl-field-manual"] [data-node-id]:focus-visible,
-    svg[data-preset="aibl-field-manual"][data-focus-active] [data-focus-selected],
-    svg[data-preset="aibl-field-manual"][data-intent-trace-active] [data-intent-trace-selected],
-    svg[data-preset="aibl-field-manual"][data-story-beat] [data-story-step][data-story-beat-state="active"] {
-      filter: drop-shadow(4px 4px 0 var(--aibl-highlight));
-    }
-    svg[data-preset="aibl-field-manual"] [data-node-id]:hover > rect:not(.c-mask),
-    svg[data-preset="aibl-field-manual"] [data-node-id]:focus-visible > rect:not(.c-mask),
-    svg[data-preset="aibl-field-manual"][data-focus-active] [data-focus-selected] > rect:not(.c-mask) {
-      stroke: var(--panel-border);
-      stroke-width: 2.4;
-    }
-    svg[data-preset="aibl-field-manual"][data-focus-active] [data-node-id] { opacity: 0.28; }
-    svg[data-preset="aibl-field-manual"][data-focus-active] [data-edge-from] { opacity: 0.16; }
-    svg[data-preset="aibl-field-manual"][data-focus-active] [data-focus-match] { opacity: 1; }
-    svg[data-preset="aibl-field-manual"][data-focus-active][data-reach-active] [data-focus-selected][data-reach-origin] {
-      filter: drop-shadow(4px 4px 0 var(--aibl-highlight));
-    }
-    svg[data-preset="aibl-field-manual"] [data-legend-kind][role="button"]:focus-visible [data-legend-hit],
-    svg[data-preset="aibl-field-manual"] [data-legend-kind][data-legend-selected] [data-legend-hit] {
-      stroke: var(--aibl-highlight);
-      filter: none;
     }
 
     /* Story Trail is a viewer-only overlay derived from the ordered focus IDs
