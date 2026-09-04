@@ -131,6 +131,21 @@ test('editorial preset reaches every visual surface and all five typed renderers
   }
 });
 
+test('AIBL Field Manual custom preset reaches every visual surface and all five typed renderers', () => {
+  for (const [mode, example] of Object.entries(CASES)) {
+    const html = render(mode, example, null, 'aibl-field-manual');
+    assert.match(html, /<html lang="en" data-theme="dark" data-preset="aibl-field-manual">/, mode);
+    assert.match(svgBlock(html), /data-preset="aibl-field-manual"/, mode);
+    assert.match(html, /content: attr\(data-preset-badge-aibl-field-manual\)/, mode);
+    assert.match(html, /data-preset-badge-aibl-field-manual="AIBL \/ FIELD MANUAL"/, mode);
+    assert.match(html, /content: attr\(data-preset-badge-aibl-exhibit\)/, mode);
+    assert.match(html, /data-preset-badge-aibl-exhibit="EVIDENCE PLATE \/ 01"/, mode);
+    assert.match(html, /\[data-preset="aibl-field-manual"\]\[data-theme="dark"\]/, mode);
+    assert.match(html, /html\[data-preset="aibl-field-manual"\] \.diagram-container/, mode);
+    assert.match(html, /html\[data-preset="aibl-field-manual"\] \.card/, mode);
+  }
+});
+
 test('all five renderers add one geometry-neutral semantic sigil per primary node', () => {
   for (const [mode, example] of Object.entries(CASES)) {
     const source = JSON.parse(fs.readFileSync(path.join(skillRoot, 'examples', example), 'utf8'));

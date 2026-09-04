@@ -39,14 +39,16 @@ function presetRuntime(html) {
   return html.match(/Archify\.preset = \(function \(\) \{[\s\S]*?\n    \}\)\(\);/)?.[0] || '';
 }
 
-test('all five renderers expose one reader-controlled visual style picker', () => {
+test('all five renderers expose built-in and custom visual style groups', () => {
   for (const mode of Object.keys(CASES)) {
     const html = render(mode);
     assert.match(html, /id="btn-preset"[^>]+aria-haspopup="menu"[^>]+aria-controls="preset-menu"/, mode);
     assert.match(html, /id="preset-label"/, mode);
     assert.match(html, /title="Choose visual style \(S cycles\)"/, mode);
     assert.match(html, /id="preset-menu" role="menu" aria-label="Visual style"/, mode);
-    for (const preset of ['classic', 'signal-flow', 'blueprint', 'editorial']) {
+    assert.match(html, />Built in<\//, mode);
+    assert.match(html, />Custom<\//, mode);
+    for (const preset of ['classic', 'signal-flow', 'blueprint', 'editorial', 'aibl-field-manual']) {
       assert.match(html, new RegExp(`data-preset-value="${preset}"[^>]+role="menuitemradio"`), `${mode}: ${preset}`);
     }
     assert.match(html, /Archify\.preset = \(function \(\)/, mode);
@@ -57,7 +59,7 @@ test('all five renderers expose one reader-controlled visual style picker', () =
 test('style selection synchronizes page, picker, and canonical SVG without touching geometry', () => {
   const html = render('architecture');
   const runtime = presetRuntime(html);
-  assert.match(runtime, /\['classic', 'signal-flow', 'blueprint', 'editorial'\]/);
+  assert.match(runtime, /\['classic', 'signal-flow', 'blueprint', 'editorial', 'aibl-field-manual'\]/);
   assert.match(runtime, /html\.setAttribute\('data-preset', preset\)/);
   assert.match(runtime, /svg\.setAttribute\('data-preset', preset\)/);
   assert.match(runtime, /data-preset-option/);
@@ -86,6 +88,7 @@ test('style picker follows the accessible menu-button interaction contract', () 
   assert.match(runtime, /case 'End':/);
   assert.match(runtime, /document\.addEventListener\('click'/);
   assert.match(html, /\.preset-option-swatch\.editorial/);
+  assert.match(html, /\.preset-option-swatch\.aibl-field-manual/);
   assert.match(
     html,
     /@media \(max-width: 720px\)[\s\S]*?\.toolbar \{[\s\S]*?position: relative;/,
@@ -102,12 +105,13 @@ test('style try-on is session-only and unavailable to passive embeds', () => {
   assert.match(html, /@media print/);
 });
 
-test('same topology keeps identical canonical SVG geometry across all four styles', () => {
-  const normalize = (svg) => svg.replace(/ data-preset="(?:classic|signal-flow|blueprint|editorial)"/, '');
-  const variants = ['classic', 'signal-flow', 'blueprint', 'editorial'].map((preset) => normalize(svgBlock(render('architecture', preset))));
+test('same topology keeps identical canonical SVG geometry across built-in and custom styles', () => {
+  const normalize = (svg) => svg.replace(/ data-preset="(?:classic|signal-flow|blueprint|editorial|aibl-field-manual)"/, '');
+  const variants = ['classic', 'signal-flow', 'blueprint', 'editorial', 'aibl-field-manual'].map((preset) => normalize(svgBlock(render('architecture', preset))));
   assert.equal(variants[1], variants[0]);
   assert.equal(variants[2], variants[0]);
   assert.equal(variants[3], variants[0]);
+  assert.equal(variants[4], variants[0]);
 });
 
 process.on('exit', () => fs.rmSync(tmp, { recursive: true, force: true }));
