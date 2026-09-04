@@ -136,13 +136,15 @@ test('AIBL Field Manual custom preset reaches every visual surface and all five 
     const html = render(mode, example, null, 'aibl-field-manual');
     assert.match(html, /<html lang="en" data-theme="dark" data-preset="aibl-field-manual">/, mode);
     assert.match(svgBlock(html), /data-preset="aibl-field-manual"/, mode);
-    assert.match(html, /content: attr\(data-preset-badge-aibl-field-manual\)/, mode);
-    assert.match(html, /data-preset-badge-aibl-field-manual="AIBL \/ FIELD MANUAL"/, mode);
+    assert.doesNotMatch(html, /content: attr\(data-preset-badge-aibl-field-manual\)/, mode);
     assert.match(html, /content: attr\(data-preset-badge-aibl-exhibit\)/, mode);
     assert.match(html, /data-preset-badge-aibl-exhibit="EVIDENCE PLATE \/ 01"/, mode);
     assert.match(html, /\[data-preset="aibl-field-manual"\]\[data-theme="dark"\]/, mode);
     assert.match(html, /html\[data-preset="aibl-field-manual"\] \.diagram-container/, mode);
     assert.match(html, /html\[data-preset="aibl-field-manual"\] \.card/, mode);
+    assert.match(html, /html\[data-preset="aibl-field-manual"\] \.relationship-lens-head/, mode);
+    assert.match(html, /svg\[data-preset="aibl-field-manual"\]\[data-focus-active\] \[data-focus-selected\]/, mode);
+    assert.match(html, /drop-shadow\(4px 4px 0 var\(--aibl-highlight\)\)/, mode);
   }
 });
 
