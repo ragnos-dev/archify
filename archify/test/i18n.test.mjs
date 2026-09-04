@@ -268,7 +268,7 @@ test('real Chrome keeps zh-CN Finder, Route, Export, and accessibility UI locali
           return content.replace(/^["']|["']$/g, '');
         }
         var presetBadges = {};
-        ['signal-flow', 'blueprint', 'editorial'].forEach(function (preset) {
+        ['signal-flow', 'blueprint', 'editorial', 'aibl-field-manual'].forEach(function (preset) {
           document.documentElement.setAttribute('data-preset', preset);
           presetBadges[preset] = {
             header: pseudoContent('.header-row'),
@@ -310,6 +310,7 @@ test('real Chrome keeps zh-CN Finder, Route, Export, and accessibility UI locali
         'signal-flow': { header: '信号流', plate: 'none' },
         blueprint: { header: '蓝图 / 修订 01', plate: '' },
         editorial: { header: '编辑风格 / 现场笔记', plate: 'ARCHIFY / 图版 04' },
+        'aibl-field-manual': { header: 'AIBL / 现场手册', plate: '证据图版 / 01' },
       }, type);
 
       const shareCardFailure = await evaluate(browser, sessionId, `(async function () {

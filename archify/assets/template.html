@@ -34,10 +34,10 @@
   <!-- Async font load: a blackholed network must not block first paint.
        The body font stack falls back to system monospace until it lands. -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   </noscript>
   <style>
     /* ==========================================================
@@ -348,6 +348,90 @@
       --toolbar-menu-bg: #fbf8f1;
     }
 
+    /* ==========================================================
+       AIBL FIELD MANUAL — the first bundled custom preset.
+       It ports AI Build Lab's evidence-first material system into
+       Archify without changing semantic geometry: graph paper,
+       ink rules, hard offset shadows, flat evidence tints, and one
+       hot-lime highlighter. Dark mode is the accepted Prussian-night
+       Field Manual counterpart rather than a third color theme.
+       ========================================================== */
+    [data-preset="aibl-field-manual"][data-theme="dark"] {
+      --bg: #0b1526;
+      --grid: rgba(0, 212, 255, 0.10);
+      --panel: #142136;
+      --panel-border: #e9f1f8;
+      --lane-fill: #182741;
+      --lane-stroke: #8b9ab0;
+      --text: #e9f1f8;
+      --text-muted: #c0cddc;
+      --text-dim: #8b9ab0;
+      --text-faint: #aab7c8;
+      --mask: #142136;
+      --frontend-fill: #0c2e3e;
+      --frontend-stroke: #00d4ff;
+      --backend-fill: #23310a;
+      --backend-stroke: #c8ff00;
+      --database-fill: #24233a;
+      --database-stroke: #c7b9ff;
+      --cloud-fill: #31300c;
+      --cloud-stroke: #f1dd66;
+      --security-fill: #3a1d26;
+      --security-stroke: #ff8d8d;
+      --messagebus-fill: #10312e;
+      --messagebus-stroke: #78e0d8;
+      --external-fill: #182741;
+      --external-stroke: #c0cddc;
+      --arrow: #8b9ab0;
+      --arrow-emphasis: #c8ff00;
+      --toolbar-bg: #142136;
+      --toolbar-border: #e9f1f8;
+      --toolbar-text: #e9f1f8;
+      --toolbar-hover: #182741;
+      --toolbar-menu-bg: #101b2e;
+      --aibl-shadow: #050b14;
+      --aibl-highlight: #c8ff00;
+      --aibl-on-highlight: #111111;
+    }
+
+    [data-preset="aibl-field-manual"][data-theme="light"] {
+      --bg: #f4f1ea;
+      --grid: rgba(17, 17, 17, 0.05);
+      --panel: #ffffff;
+      --panel-border: #111111;
+      --lane-fill: #ffffff;
+      --lane-stroke: #6b6b6b;
+      --text: #111111;
+      --text-muted: #3a3a3a;
+      --text-dim: #6b6b6b;
+      --text-faint: #5b5b5b;
+      --mask: #ffffff;
+      --frontend-fill: #daf2f6;
+      --frontend-stroke: #007d91;
+      --backend-fill: #eef6cc;
+      --backend-stroke: #4d6900;
+      --database-fill: #e8e3d6;
+      --database-stroke: #4c465c;
+      --cloud-fill: #fff6c7;
+      --cloud-stroke: #765f00;
+      --security-fill: #f9e2de;
+      --security-stroke: #a43f3f;
+      --messagebus-fill: #dcf1ed;
+      --messagebus-stroke: #256f69;
+      --external-fill: #e8e3d6;
+      --external-stroke: #3a3a3a;
+      --arrow: #6b6b6b;
+      --arrow-emphasis: #4d6900;
+      --toolbar-bg: #ffffff;
+      --toolbar-border: #111111;
+      --toolbar-text: #111111;
+      --toolbar-hover: #eef6cc;
+      --toolbar-menu-bg: #ffffff;
+      --aibl-shadow: #111111;
+      --aibl-highlight: #c8ff00;
+      --aibl-on-highlight: #111111;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
@@ -382,6 +466,15 @@
       background-image:
         linear-gradient(90deg, transparent 0, transparent 5.4rem, color-mix(in srgb, var(--security-stroke) 18%, transparent) 5.4rem, color-mix(in srgb, var(--security-stroke) 18%, transparent) calc(5.4rem + 1px), transparent calc(5.4rem + 1px)),
         repeating-linear-gradient(0deg, transparent 0, transparent 31px, color-mix(in srgb, var(--grid) 36%, transparent) 31px, color-mix(in srgb, var(--grid) 36%, transparent) 32px);
+      background-attachment: fixed;
+    }
+    html[data-preset="aibl-field-manual"] body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-image:
+        linear-gradient(var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 28px 28px;
+      background-position: -1px -1px;
       background-attachment: fixed;
     }
 
@@ -621,7 +714,8 @@
 
     html[data-preset="signal-flow"] .header,
     html[data-preset="blueprint"] .header,
-    html[data-preset="editorial"] .header { padding-right: 29.5rem; }
+    html[data-preset="editorial"] .header,
+    html[data-preset="aibl-field-manual"] .header { padding-right: 29.5rem; }
 
     .header-row {
       display: flex;
@@ -724,6 +818,50 @@
       white-space: nowrap;
     }
 
+    html[data-preset="aibl-field-manual"] h1,
+    html[data-preset="aibl-field-manual"] .card h3 {
+      font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+      letter-spacing: -0.03em;
+    }
+    html[data-preset="aibl-field-manual"] h1 { font-size: 1.72rem; }
+    html[data-preset="aibl-field-manual"] .pulse-dot {
+      position: relative;
+      width: 1.65rem;
+      height: 1.65rem;
+      flex: 0 0 auto;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--aibl-highlight);
+      color: var(--aibl-on-highlight);
+      animation: none;
+      box-shadow: 3px 3px 0 var(--aibl-shadow);
+    }
+    html[data-preset="aibl-field-manual"] .pulse-dot::before {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      content: "/|";
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+    }
+    html[data-preset="aibl-field-manual"] .header-row::after {
+      content: attr(data-preset-badge-aibl-field-manual);
+      margin-left: auto;
+      padding: 0.3rem 0.58rem;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--aibl-highlight);
+      color: var(--aibl-on-highlight);
+      box-shadow: 3px 3px 0 var(--aibl-shadow);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      white-space: nowrap;
+    }
+
     .diagram-container {
       --archify-nav-reserve: 0px;
       background: var(--panel);
@@ -799,6 +937,32 @@
       pointer-events: none;
     }
     html[data-embed="true"][data-preset="editorial"] .diagram-container::after { display: none; }
+    html[data-preset="aibl-field-manual"] .diagram-container {
+      overflow: hidden;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--panel);
+      box-shadow: 6px 6px 0 var(--aibl-shadow);
+    }
+    html[data-preset="aibl-field-manual"] .diagram-container::after {
+      position: absolute;
+      z-index: 10;
+      top: 0.7rem;
+      right: 1rem;
+      padding: 0.24rem 0.48rem;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--panel);
+      color: var(--text);
+      content: attr(data-preset-badge-aibl-exhibit);
+      box-shadow: 3px 3px 0 var(--aibl-shadow);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      pointer-events: none;
+    }
+    html[data-embed="true"][data-preset="aibl-field-manual"] .diagram-container::after { display: none; }
     html[data-motion-capable="true"][data-preset="signal-flow"][data-ambient-motion="running"] .diagram-container::before {
       content: "";
       position: absolute;
@@ -2926,6 +3090,28 @@
     }
     html[data-preset="editorial"] .card-dot { border-radius: 0; transform: rotate(45deg) scale(0.78); }
 
+    html[data-preset="aibl-field-manual"] .card {
+      position: relative;
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--panel);
+      box-shadow: 6px 6px 0 var(--aibl-shadow);
+    }
+    html[data-preset="aibl-field-manual"] .card::before {
+      position: absolute;
+      top: -2px;
+      left: 1rem;
+      width: 3rem;
+      border-top: 5px solid var(--aibl-highlight);
+      content: "";
+    }
+    html[data-preset="aibl-field-manual"] .card-dot {
+      width: 9px;
+      height: 9px;
+      border: 1px solid var(--panel-border);
+      border-radius: 0.1rem;
+    }
+
     .card-header {
       display: flex;
       align-items: center;
@@ -3178,12 +3364,19 @@
       box-shadow: 0 0 0 2px color-mix(in srgb, var(--arrow-emphasis) 14%, transparent);
       transform: rotate(45deg) scale(0.72);
     }
+    #btn-preset[data-preset-option="aibl-field-manual"] .preset-control-mark {
+      border: 2px solid var(--panel-border);
+      border-radius: 0.1rem;
+      background: var(--aibl-highlight);
+      box-shadow: 2px 2px 0 var(--aibl-shadow);
+      transform: none;
+    }
     .toolbar .preset-menu {
       position: absolute;
       top: calc(100% + 0.375rem);
       right: 0;
       display: none;
-      width: 18.5rem;
+      width: 19.5rem;
       max-width: calc(100vw - 2rem);
       padding: 0.45rem;
       border: 1px solid var(--toolbar-border);
@@ -3216,6 +3409,11 @@
       font-size: 0.52rem;
       letter-spacing: 0.04em;
       text-transform: none;
+    }
+    .preset-menu-heading.custom {
+      margin-top: 0.35rem;
+      padding-top: 0.55rem;
+      border-top: 1px solid color-mix(in srgb, var(--toolbar-border) 48%, transparent);
     }
     .toolbar .preset-option {
       display: grid;
@@ -3317,6 +3515,32 @@
       background: #c9502d;
       transform: rotate(45deg);
     }
+    .preset-option-swatch.aibl-field-manual {
+      border: 2px solid #111111;
+      border-radius: 0.12rem;
+      background-color: #f4f1ea;
+      background-image:
+        linear-gradient(rgba(17,17,17,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17,17,17,0.08) 1px, transparent 1px);
+      background-size: 0.42rem 0.42rem;
+      box-shadow: 2px 2px 0 #111111;
+    }
+    .preset-option-swatch.aibl-field-manual::before {
+      top: 0.38rem;
+      right: 0.32rem;
+      bottom: 0.38rem;
+      left: 0.32rem;
+      border: 1px solid #111111;
+      background: #ffffff;
+    }
+    .preset-option-swatch.aibl-field-manual::after {
+      top: 0.22rem;
+      left: 0.42rem;
+      width: 1.2rem;
+      height: 0.28rem;
+      background: #c8ff00;
+      transform: rotate(-5deg);
+    }
     .preset-option-copy { min-width: 0; }
     .preset-option-copy strong,
     .preset-option-copy small { display: block; }
@@ -3363,6 +3587,28 @@
     html[data-preset="editorial"] .guided-views,
     html[data-preset="editorial"] .share-chapter-cue {
       border-radius: 0.3rem;
+    }
+    html[data-preset="aibl-field-manual"] .toolbar button,
+    html[data-preset="aibl-field-manual"] .preset-menu,
+    html[data-preset="aibl-field-manual"] .export-menu,
+    html[data-preset="aibl-field-manual"] .overview-map,
+    html[data-preset="aibl-field-manual"] .semantic-lens,
+    html[data-preset="aibl-field-manual"] .route-probe,
+    html[data-preset="aibl-field-manual"] .focus-chip,
+    html[data-preset="aibl-field-manual"] .diagram-guide,
+    html[data-preset="aibl-field-manual"] .node-finder,
+    html[data-preset="aibl-field-manual"] .guided-views,
+    html[data-preset="aibl-field-manual"] .share-chapter-cue {
+      border: 2px solid var(--panel-border);
+      border-radius: 0.25rem;
+      background: var(--toolbar-bg);
+      box-shadow: 3px 3px 0 var(--aibl-shadow);
+      backdrop-filter: none;
+    }
+    html[data-preset="aibl-field-manual"] .toolbar .preset-option {
+      border: 0;
+      border-radius: 0.2rem;
+      box-shadow: none;
     }
     .motion-control-dot {
       width: 0.46rem;
@@ -3590,14 +3836,16 @@
       .header { margin-bottom: 1.25rem; padding-right: 0; }
       html[data-preset="signal-flow"] .header,
       html[data-preset="blueprint"] .header,
-      html[data-preset="editorial"] .header { padding-right: 0; }
+      html[data-preset="editorial"] .header,
+      html[data-preset="aibl-field-manual"] .header { padding-right: 0; }
       .header-row {
         gap: 0.75rem;
         align-items: flex-start;
       }
       html[data-preset="signal-flow"] .header-row,
       html[data-preset="blueprint"] .header-row,
-      html[data-preset="editorial"] .header-row { flex-wrap: wrap; }
+      html[data-preset="editorial"] .header-row,
+      html[data-preset="aibl-field-manual"] .header-row { flex-wrap: wrap; }
       html[data-preset="signal-flow"] .header-row::after {
         margin-left: 0;
         order: 3;
@@ -3607,6 +3855,10 @@
         order: 3;
       }
       html[data-preset="editorial"] .header-row::after {
+        margin-left: 0;
+        order: 3;
+      }
+      html[data-preset="aibl-field-manual"] .header-row::after {
         margin-left: 0;
         order: 3;
       }
@@ -4873,25 +5125,31 @@
         <span class="toolbar-icon toolbar-chevron" aria-hidden="true"></span>
       </button>
       <div class="preset-menu" id="preset-menu" role="menu" aria-label="{{i18n:viewer.preset.menu}}">
-        <div class="preset-menu-heading" role="presentation"><span>{{i18n:viewer.preset.identity}}</span><span>{{i18n:viewer.preset.cycles}}</span></div>
-        <button class="preset-option" data-preset-value="classic" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
+        <div class="preset-menu-heading" role="presentation"><span>{{i18n:viewer.preset.builtIn}}</span><span>{{i18n:viewer.preset.cycles}}</span></div>
+        <button class="preset-option" data-preset-group="built-in" data-preset-value="classic" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
           <span class="preset-option-swatch classic" aria-hidden="true"></span>
           <span class="preset-option-copy"><strong>{{i18n:viewer.preset.classic}}</strong><small>{{i18n:viewer.preset.classic.hint}}</small></span>
           <span class="preset-option-check" aria-hidden="true"></span>
         </button>
-        <button class="preset-option" data-preset-value="signal-flow" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
+        <button class="preset-option" data-preset-group="built-in" data-preset-value="signal-flow" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
           <span class="preset-option-swatch signal-flow" aria-hidden="true"></span>
           <span class="preset-option-copy"><strong>{{i18n:viewer.preset.flow}}</strong><small>{{i18n:viewer.preset.flow.hint}}</small></span>
           <span class="preset-option-check" aria-hidden="true"></span>
         </button>
-        <button class="preset-option" data-preset-value="blueprint" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
+        <button class="preset-option" data-preset-group="built-in" data-preset-value="blueprint" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
           <span class="preset-option-swatch blueprint" aria-hidden="true"></span>
           <span class="preset-option-copy"><strong>{{i18n:viewer.preset.blueprint}}</strong><small>{{i18n:viewer.preset.blueprint.hint}}</small></span>
           <span class="preset-option-check" aria-hidden="true"></span>
         </button>
-        <button class="preset-option" data-preset-value="editorial" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
+        <button class="preset-option" data-preset-group="built-in" data-preset-value="editorial" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
           <span class="preset-option-swatch editorial" aria-hidden="true"></span>
           <span class="preset-option-copy"><strong>{{i18n:viewer.preset.editorial}}</strong><small>{{i18n:viewer.preset.editorial.hint}}</small></span>
+          <span class="preset-option-check" aria-hidden="true"></span>
+        </button>
+        <div class="preset-menu-heading custom" role="presentation"><span>{{i18n:viewer.preset.custom}}</span></div>
+        <button class="preset-option" data-preset-group="custom" data-preset-value="aibl-field-manual" type="button" role="menuitemradio" aria-checked="false" tabindex="-1">
+          <span class="preset-option-swatch aibl-field-manual" aria-hidden="true"></span>
+          <span class="preset-option-copy"><strong>{{i18n:viewer.preset.aiblFieldManual}}</strong><small>{{i18n:viewer.preset.aiblFieldManual.hint}}</small></span>
           <span class="preset-option-check" aria-hidden="true"></span>
         </button>
       </div>
@@ -4953,7 +5211,8 @@
       <div class="header-row"
            data-preset-badge-signal-flow="{{i18n:viewer.preset.badge.signalFlow}}"
            data-preset-badge-blueprint="{{i18n:viewer.preset.badge.blueprint}}"
-           data-preset-badge-editorial="{{i18n:viewer.preset.badge.editorial}}">
+           data-preset-badge-editorial="{{i18n:viewer.preset.badge.editorial}}"
+           data-preset-badge-aibl-field-manual="{{i18n:viewer.preset.badge.aiblFieldManual}}">
         <div class="pulse-dot"></div>
         <h1>[PROJECT NAME] Architecture</h1>
       </div>
@@ -5004,7 +5263,8 @@
 
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
-         data-preset-badge-editorial-plate="{{i18n:viewer.preset.badge.editorialPlate}}">
+         data-preset-badge-editorial-plate="{{i18n:viewer.preset.badge.editorialPlate}}"
+         data-preset-badge-aibl-exhibit="{{i18n:viewer.preset.badge.aiblExhibit}}">
       <!-- ARCHIFY:SVG_SLOT_START -->
       <svg viewBox="0 0 1000 680" role="img" aria-label="[PROJECT NAME] architecture diagram">
         <!-- Definitions -->
@@ -5437,18 +5697,19 @@
     }
 
     /* ============================================================
-       Visual style try-on — one topology, four bundled presets.
+       Visual style try-on — one topology, four built-ins and one custom preset.
        The reader's choice is intentionally session-only: it updates the
        live page and canonical SVG together, but never rewrites the source,
        URL, or a later diagram's authored default.
        ============================================================ */
     Archify.preset = (function () {
-      var PRESETS = ['classic', 'signal-flow', 'blueprint', 'editorial'];
+      var PRESETS = ['classic', 'signal-flow', 'blueprint', 'editorial', 'aibl-field-manual'];
       var LABELS = {
         classic: viewerText('viewer.preset.classic.short'),
         'signal-flow': viewerText('viewer.preset.flow.short'),
         blueprint: viewerText('viewer.preset.blueprint'),
-        editorial: viewerText('viewer.preset.editorial')
+        editorial: viewerText('viewer.preset.editorial'),
+        'aibl-field-manual': viewerText('viewer.preset.aiblFieldManual.short')
       };
       var html = document.documentElement;
       var svg = document.querySelector('.diagram-container svg');
@@ -6347,7 +6608,9 @@
               var theme = document.documentElement.getAttribute('data-theme') || 'dark';
               var presetKey = preset === 'signal-flow'
                 ? 'viewer.preset.flow.short'
-                : 'viewer.preset.' + preset;
+                : preset === 'aibl-field-manual'
+                  ? 'viewer.preset.aiblFieldManual.short'
+                  : 'viewer.preset.' + preset;
               var presetLabel = viewerText(presetKey).toUpperCase();
               var themeLabel = viewerText('viewer.theme.' + theme).toUpperCase();
               var cardLabel = routeSnapshot
